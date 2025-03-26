@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+
+	  <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.3" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
+
+	  <ProjectReference Include="..\InternetCoffee.Application\InternetCoffee.Application.csproj" />
+    <ProjectReference Include="..\InternetCoffee.Domain\InternetCoffee.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
