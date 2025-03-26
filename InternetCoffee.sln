@@ -21,6 +21,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetCoffeeMachine.Appli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetCoffee.IntegrationTests", "tests\InternetCoffee.IntegrationTests\InternetCoffee.IntegrationTests.csproj", "{1B6780AF-3A55-4A60-9620-11142D85B96D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{20B9400F-6115-40B9-A8AE-58ECF3909EB4}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

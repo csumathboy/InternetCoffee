@@ -48,10 +48,6 @@ namespace InternetCoffee.WebAPI
 
             app.MapControllers();
 
-            app.MapControllerRoute(
-                name: "brew-coffee",
-                pattern: "{controller=BrewCoffee}/{action=BrewCoffee}");
- 
             app.Run();
         }
     }
