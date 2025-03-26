@@ -24,7 +24,7 @@ GET /brew-coffee
 ```
 
 Responses:
-- 200 OK: `{ "message": "Your piping hot coffee is ready", "prepared": "2025-03-25T14:00:00Z" }`
+- 200 OK: `{ "message": "Your piping hot coffee is ready", "prepared": "2025-03-26T14:54:40+00:00" }`
 - 503 Service Unavailable: The machine is out of coffee (every 5th request).
 - 418 I'm a teapot: April 1st special case.
 
