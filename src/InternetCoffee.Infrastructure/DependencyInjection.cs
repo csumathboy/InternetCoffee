@@ -1,5 +1,6 @@
-﻿
+﻿using InternetCoffee.Application.Common.Weather;
 using InternetCoffee.Infrastructure.Caching;
+using InternetCoffee.Infrastructure.Weather;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
@@ -11,6 +12,9 @@ public static class DependencyInjection
     {
         //Register Caching
         builder.Services.AddCaching();
+        
+        //Register Weather
+        builder.Services.AddWeatherSevices(builder.Configuration);
 
     }
 }

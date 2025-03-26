@@ -56,7 +56,7 @@ Responses:
 - Implement unit and integration tests
 - Add API documentation using Swagger
 
-### Phase 2: Iced Coffee
+### Phase 2: Iced Coffee (Completed)
 - Add Iced Coffee by wheather condition
 
 ### Phase 3: Advanced Features

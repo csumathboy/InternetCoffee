@@ -1,24 +1,30 @@
 using InternetCoffee.Application.BrewCoffee;
+using InternetCoffee.Application.Common.Weather;
 using InternetCoffee.Infrastructure.Caching;
+using InternetCoffee.TestShared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
- 
+using Microsoft.Extensions.DependencyInjection;
+using Xunit;
+
 
 namespace InternetCoffee.ApplicationUnitTests
 {
     /// <summary>
     /// BrewCoffeeQueryHandlerTests
     /// </summary>
-    public class BrewCoffeeQueryHandlerTests
+    public class BrewCoffeeQueryHandlerTests : IClassFixture<TestFixture>
     {
         private readonly LocalCacheService _cacheService;
         private readonly IMemoryCache _memoryCache;
         private readonly BrewCoffeeQueryHandler _handler;
-        public BrewCoffeeQueryHandlerTests()
+        private readonly IWeatherService? _weatherService;
+        public BrewCoffeeQueryHandlerTests(TestFixture fixture)
         {
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _cacheService = new LocalCacheService(_memoryCache);
-            _handler = new BrewCoffeeQueryHandler(_cacheService);
+            _weatherService = fixture.ServiceProvider.GetService<IWeatherService>();
+            _handler = new BrewCoffeeQueryHandler(_cacheService, _weatherService!);
         }
         
         [Fact]
@@ -58,8 +64,6 @@ namespace InternetCoffee.ApplicationUnitTests
             Assert.Equal("Your piping hot coffee is ready", result.Message);
         }
 
-        private class FactAttribute : Attribute
-        {
-        }
+      
     }
 }

@@ -1,6 +1,9 @@
 
 
+using InternetCoffee.Application.Common.Weather;
+using InternetCoffee.Infrastructure.Weather;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace InternetCoffee.WebAPI
 {
@@ -9,10 +12,10 @@ namespace InternetCoffee.WebAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-           
 
+            
             // Add services to the container.
-
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddControllers();
             builder.Services.AddSwaggerGen(options =>
             {

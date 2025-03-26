@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using InternetCoffee.Application.Common.Caching;
+using InternetCoffee.Application.Common.Weather;
 using MediatR;
 
 namespace InternetCoffee.Application.BrewCoffee
@@ -25,13 +27,16 @@ namespace InternetCoffee.Application.BrewCoffee
         /// Cache service
         /// </summary>
         private readonly ICacheService _cacheService;
+
+        private readonly IWeatherService _weatherService;
         /// <summary>
         /// constructor initializes cache service and other dependencies
         /// </summary>
         /// <param name="cacheService"></param>
-        public BrewCoffeeQueryHandler(ICacheService cacheService)
+        public BrewCoffeeQueryHandler(ICacheService cacheService,IWeatherService weatherService)
         {
             _cacheService = cacheService;
+            _weatherService = weatherService;
         }
         /// <summary>
         /// handle brew coffee request
@@ -61,9 +66,7 @@ namespace InternetCoffee.Application.BrewCoffee
             //ordinary request
             else
             {
-                respone.StatusCode = 200;
-                respone.Message = "Your piping hot coffee is ready";
-                respone.Prepared = dateTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+                respone= OrdinaryResponse(dateTime).Result;
             }
             //update cache
             _cacheService.SetData("requestCount", requestCount);
@@ -72,6 +75,31 @@ namespace InternetCoffee.Application.BrewCoffee
             return await Task.FromResult(respone);
         }
 
+        /// <summary>
+        /// Ordinary response
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        private async Task<BrewCoffeeResponse> OrdinaryResponse(DateTime dateTime)
+        {
+            var respone = new BrewCoffeeResponse();
+            var city = await _weatherService.GetUserCityAsync(string.Empty);
+            var temperature = await _weatherService.GetCurrentTemperatureAsync(city);
+            
+            if (Math.Floor(temperature) > 30)
+            {
+                respone.Message = "Your refreshing iced coffee is ready";
+            }
+            else
+            {
+                respone.Message = "Your piping hot coffee is ready";
+            }
+
+            respone.StatusCode = 200;
+            respone.Prepared = dateTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            return respone;
+        }
     }
 
 }
+

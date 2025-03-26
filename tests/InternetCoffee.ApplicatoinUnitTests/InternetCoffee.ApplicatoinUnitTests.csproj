@@ -14,12 +14,12 @@
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
 		<PackageReference Include="xunit" Version="2.5.3" />
+		<PackageReference Include="Xunit.DependencyInjection" Version="8.11.0" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\InternetCoffee.Application\InternetCoffee.Application.csproj" />
-		<ProjectReference Include="..\..\src\InternetCoffee.Infrastructure\InternetCoffee.Infrastructure.csproj" />
+	  <ProjectReference Include="..\InternetCoffee.TestShared\InternetCoffee.TestShared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

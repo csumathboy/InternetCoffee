@@ -8,12 +8,19 @@
 
   <ItemGroup>
 
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+
 	  <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.3" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
 	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
+	  <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
 
 	  <ProjectReference Include="..\InternetCoffee.Application\InternetCoffee.Application.csproj" />
     <ProjectReference Include="..\InternetCoffee.Domain\InternetCoffee.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
   </ItemGroup>
 
 </Project>

@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetCoffee.ApplicatoinUnitTests", "tests\InternetCoffee.ApplicatoinUnitTests\InternetCoffee.ApplicatoinUnitTests.csproj", "{B710EAF0-AABE-B219-EF36-C10072CEC1F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternetCoffee.TestShared", "tests\InternetCoffee.TestShared\InternetCoffee.TestShared.csproj", "{F14D2C88-7CF3-41F3-BA47-76E2C9EF5641}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{B710EAF0-AABE-B219-EF36-C10072CEC1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B710EAF0-AABE-B219-EF36-C10072CEC1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B710EAF0-AABE-B219-EF36-C10072CEC1F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F14D2C88-7CF3-41F3-BA47-76E2C9EF5641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14D2C88-7CF3-41F3-BA47-76E2C9EF5641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14D2C88-7CF3-41F3-BA47-76E2C9EF5641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14D2C88-7CF3-41F3-BA47-76E2C9EF5641}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{65E9351F-8D74-403D-A9E3-CECDBD9DEBBF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{1B6780AF-3A55-4A60-9620-11142D85B96D} = {F9BD7ECE-6FE8-45EB-9D97-E93623F1C8FB}
 		{B710EAF0-AABE-B219-EF36-C10072CEC1F9} = {F9BD7ECE-6FE8-45EB-9D97-E93623F1C8FB}
+		{F14D2C88-7CF3-41F3-BA47-76E2C9EF5641} = {F9BD7ECE-6FE8-45EB-9D97-E93623F1C8FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {126C3EDA-CF12-42E7-A7C6-104851BFC3C8}
