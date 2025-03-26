@@ -1,0 +1,6 @@
+@InternetCoffee.WebAPI_HostAddress = http://localhost:5199
+
+GET {{InternetCoffee.WebAPI_HostAddress}}/BrewCoffee/
+Accept: application/json
+
+###
