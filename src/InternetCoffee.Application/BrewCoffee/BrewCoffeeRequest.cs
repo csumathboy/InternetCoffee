@@ -85,7 +85,9 @@ namespace InternetCoffee.Application.BrewCoffee
             var respone = new BrewCoffeeResponse();
             var city = await _weatherService.GetUserCityAsync(string.Empty);
             var temperature = await _weatherService.GetCurrentTemperatureAsync(city);
-            
+            #if DEBUG
+            //temperature = 40;
+            #endif
             if (Math.Floor(temperature) > 30)
             {
                 respone.Message = "Your refreshing iced coffee is ready";
