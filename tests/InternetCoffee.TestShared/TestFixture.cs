@@ -22,11 +22,11 @@ namespace InternetCoffee.TestShared
             var configuration = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string>
                 {
-                { "WeatherSettings:WeatherApiKey", "0a1893672a85a029dabd5098bbbf9125" },
-                { "WeatherSettings:WeatherBaseUrl", "https://api.openweathermap.org/data/2.5/weather?appid={0}&q={1}"},
-               { "WeatherSettings:LocationApiKey", "20b96dca8b9a5d37b0355e9461c66e76eed30a2274422fa6213d9de6ffb2b34e"},
-               { "WeatherSettings:LocationBaseUrl", "https://api.ipinfodb.com/v3/ip-city/?key={0}&ip={1}"}
-                }) // You can add more sources like appsettings.json
+                   { "WeatherSettings:WeatherApiKey", "0a1893672a85a029dabd5098bbbf9125" },  //for test
+                   { "WeatherSettings:WeatherBaseUrl", "https://api.openweathermap.org/data/2.5/weather?appid={0}&q={1}"},
+                   { "WeatherSettings:LocationApiKey", "20b96dca8b9a5d37b0355e9461c66e76eed30a2274422fa6213d9de6ffb2b34e"},  //for test
+                   { "WeatherSettings:LocationBaseUrl", "https://api.ipinfodb.com/v3/ip-city/?key={0}&ip={1}"}
+                })  
                 .Build();
 
             // Register IConfiguration in the DI container

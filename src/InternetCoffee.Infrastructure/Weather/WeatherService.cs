@@ -91,8 +91,18 @@ namespace InternetCoffee.Infrastructure.Weather
                 return temp;
             }
             // get temperature from api
-            var response =await _httpClient.GetStringAsync(requestUrl);
-            using var doc = JsonDocument.Parse(response);
+            var response = await _httpClient.GetAsync(requestUrl);
+            if (!response.IsSuccessStatusCode)
+            {
+                return 0;
+            }
+            var responseText = await response.Content.ReadAsStringAsync();
+            if (string.IsNullOrEmpty(responseText))
+            {
+                return 0;
+            }
+          
+            using var doc = JsonDocument.Parse(responseText);
             temp = doc.RootElement.GetProperty("main").GetProperty("temp").GetDouble();
             if(temp> 0)
             {
@@ -129,8 +139,17 @@ namespace InternetCoffee.Infrastructure.Weather
                 return cacheData;
             }
             //get user city from api
-            var locationRespone = await _httpClient.GetStringAsync(requestUrl);
-            var list = locationRespone.Split(";");
+            var response= await _httpClient.GetAsync(requestUrl);
+            if (!response.IsSuccessStatusCode)
+            {
+                return userCity;
+            }
+            var responseText = await response.Content.ReadAsStringAsync();
+            if (string.IsNullOrEmpty(responseText))
+            {
+                return userCity;
+            }
+            var list = responseText.Split(";");
             if (list.Length > 6 && !list[6].Equals("-"))
             {
                 userCity = list[6];
