@@ -1,3 +1,4 @@
+using InternetCoffee.Application.BrewCoffee;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,7 +6,7 @@ namespace InternetCoffee.WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class BrewCoffeeController : ControllerBase
+public class BrewCoffeeController : BaseApiController
 {
 
     private readonly ILogger<BrewCoffeeController> _logger;
@@ -15,21 +16,27 @@ public class BrewCoffeeController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet]
-    public IEnumerable<BrewCoffee> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new BrewCoffee
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55)
-        })
-        .ToArray();
-    }
-
+    [Route("/brew-coffee")]
     [HttpGet("brew-coffee")]
     public async Task<IActionResult> BrewCoffeeAsync()
     {
-
-        return StatusCode(503, "Service Unavailable");
+        var result = await Mediator.Send(new BrewCoffeeRequest());
+        switch (result.StatusCode)
+        {
+            case 418:
+                return StatusCode(418, "I'm a teapot");
+            case 503:
+                return StatusCode(503, "Service Unavailable");
+            default:
+                return new ObjectResult(new
+                {
+                    message = result.Message,
+                    prepared = result.Prepared
+                })
+                {
+                    StatusCode = 200
+                };
+        }
+       
     }
 }

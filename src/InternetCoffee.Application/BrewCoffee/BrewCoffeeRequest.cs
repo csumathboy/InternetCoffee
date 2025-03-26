@@ -43,7 +43,32 @@ namespace InternetCoffee.Application.BrewCoffee
         {
             var respone = new BrewCoffeeResponse();
             DateTime dateTime = request.requestTime ?? DateTime.UtcNow;
-            
+            // April fools day
+            if (dateTime.Month == 4 && dateTime.Day == 1)
+            {
+                respone.StatusCode = 418;
+                respone.Message = string.Empty;
+                return await Task.FromResult(respone);
+            }
+            //get request count fifth request of 200 will be 418
+            int requestCount = _cacheService.GetData<int>("requestCount");
+            requestCount++;
+            if (requestCount % 5 == 0)
+            {
+                respone.StatusCode = 503;
+                respone.Message = string.Empty;
+            }
+            //ordinary request
+            else
+            {
+                respone.StatusCode = 200;
+                respone.Message = "Your piping hot coffee is ready";
+                respone.Prepared = dateTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            }
+            //update cache
+            _cacheService.SetData("requestCount", requestCount);
+
+            //return response
             return await Task.FromResult(respone);
         }
 
